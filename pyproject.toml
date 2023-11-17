@@ -1,0 +1,23 @@
+[project]
+name = "Phys607_project3"
+version = "0.0.1"
+authors = [
+  { name="Ayomide Matthew Adefisoye", email="amadefis@syr.edu" },
+  { name="Aleyna Akyuz", email="aakyuz@syr.edu"}
+]
+description = "Package for Project 2"
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+dynamic = ["dependencies"]
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[project.urls]
+"Homepage" = "https://github.com/aleynaakyuz/Phys607_project3"
+"Bug Tracker" = "https://github.com/aleynaakyuz/Phys607_project3/issues"
