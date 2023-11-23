@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load data from HDF file
-data = h5py.File('/home/matthew/Phys607_project3/src/data/parameter.h5', 'r')
+data = h5py.File('./src/data/parameter.h5', 'r')
 distance_data = data['distance'][:]
 data.close()
-
+print('distance data:', distance_data)
 # Define the target distribution function
 def f(distance):
     # Implement distribution function based on the data
@@ -35,8 +35,8 @@ def metropolis_hastings(initial_guess, num_iterations):
     return np.array(samples)
 
 # Set initial guess and number of iterations
-initial_guess = 15000  # this should be based on prior knowledge or so
-num_iterations = 100000
+initial_guess = 40000  # this should be based on prior knowledge or so
+num_iterations = 1000000
 
 # Run Metropolis-Hastings algorithm
 distance_samples = metropolis_hastings(initial_guess, num_iterations)
