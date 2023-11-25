@@ -4,12 +4,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Load data from HDF file
-data = h5py.File('./src/data/parameter.h5', 'r')
-distance_data = data['distance'][:]
-data.close()
-print('distance data:', distance_data)
+data = h5py.File('./src/data/data.h5', 'r')
+distance_data = data['hc'][:]
+
+
 # Define the target distribution function
-def f(distance):
+def f(x, data):
     # Implement distribution function based on the data
     mu = np.mean(distance_data) #mean
     sigma = np.std(distance_data) #standard deviation
