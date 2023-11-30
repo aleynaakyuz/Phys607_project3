@@ -1,4 +1,4 @@
-# This is a code for 1D mcmc
+# This is a code for 2D mcmc
 
 import numpy as np
 from tqdm import tqdm
@@ -6,6 +6,8 @@ from testing import Gelman_Rubin
 
 
 def mcmc(initial, data, post, prop, iterations):
+   '''function performing the 2D MCMC sampling with 5 parameters which illustrates (a) initial guess for the estimated parameter, (b) observed data, (c) posterior probability function,
+   (c) proposal function, and (d) number oof iterations'''
     x = [initial]
     p = [post(data, x[-1])]
     for i in tqdm(range(iterations)):
@@ -16,10 +18,11 @@ def mcmc(initial, data, post, prop, iterations):
         if u <= acc:
             x.append(x_test)
             p.append(p_test)
-    return np.array(x), np.array(p)
+    return np.array(x), np.array(p) #returns array of sampled parameters, and array of corresponding posterior probabilities
     
 
 def mcmc_with_convergence(initial, data, post, prop, iterations, num_chains):
+    '''performs the MCMC sampling with convergence testing using the imported Gelman_Rubin Statistics'''
     chain_var1 = []
     chain_var2 = []
     
