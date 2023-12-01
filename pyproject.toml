@@ -1,11 +1,11 @@
 [project]
-name = "Phys607_project3"
+name = "estimator"
 version = "0.0.1"
 authors = [
-  { name="Ayomide Matthew Adefisoye", email="amadefis@syr.edu" },
-  { name="Aleyna Akyuz", email="aakyuz@syr.edu"}
+  { name="Aleyna Akyuz", email="aakyuz@syr.edu" },
+  { name="Ayomide Matthew Adefisoye", email="aakyuz@syr.edu" }
 ]
-description = "Package for Project 2"
+description = "A small example package"
 readme = "README.md"
 requires-python = ">=3.7"
 classifiers = [
@@ -13,13 +13,19 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
-
-dynamic = ["dependencies"]
-[tool.setuptools.dynamic]
-dependencies = {file = ["requirements.txt"]}
-
+dependencies = [
+    matplotlib==3.7.3           
+    matplotlib-inline==0.1.6
+    numpy==1.23.5
+    numpy-base==1.26.0                                          
+    pycbc==2.2.2
+    emcee==2.1.1
+    h5py==3.9.0
+    tqdm==4.66.1                     
+    ]
+    
 [project.scripts]
-main = "main:main.py"
+run_estimator = "estimator.main:main"
 
 [project.urls]
 "Homepage" = "https://github.com/aleynaakyuz/Phys607_project3"
