@@ -3,9 +3,6 @@
 import numpy as np
 from tqdm import tqdm
 from testing import Gelman_Rubin
-from pycbc.waveform.waveform import get_fd_waveform
-from create_data import create_data
-import h5py
 
 
 
@@ -90,18 +87,52 @@ def proposal(x):
     return np.random.normal(0, 1, 2) + x
 
 def prior_coa(var):
+    """
+    Prior for coa_phase
+
+    Parameters:
+    -----------
+    var : float, value for coa_phase
+
+    Returns:
+    -------
+    int, zero or one
+    """
     if 1.5<var<(1.5)*np.pi:
         return 1
     else:
         return 0
 
 def prior_inc(var):
+    """
+    Prior for inclanation
+
+    Parameters:
+    -----------
+    var : float, value for inclanation
+
+    Returns:
+    -------
+    int, zero or one
+    """
     if 2.0<var<(1.5)*np.pi:
         return 1
     else:
         return 0
     
 def prior_emcee(var):
+    """
+    Common prior for emcee implementation
+
+    Parameters:
+    -----------
+    var : dic, values for parameters
+
+    Returns:
+    -------
+    int, zero or one
+    """
+    if 2.0<var<(1.
     coa = var['coa_phase']
     inc = var['inclination']
     if 1.5<coa<(1.5)*np.pi and 2.0<inc<(1.5)*np.pi:
@@ -110,6 +141,20 @@ def prior_emcee(var):
         return 0
 
 def log_likelihood_hw(data, inp, var, sigma=1):
+    """
+    Calculates the log likelihood for handwritten
+    version.
+
+    Parameters:
+    -----------
+    data : numpy array, data.
+    inp : dic, parameters for waveform generation
+    var : dic, values for parameters
+
+    Returns:
+    ---------
+    likelihood : float, log likelihood value.
+    """
     inp.update({'coa_phase':var[0], 'inclination':var[1]})
     hp, _ = get_fd_waveform(**inp)
     predicted_data = np.real(hp.data)*10**24
@@ -120,9 +165,19 @@ def log_likelihood_hw(data, inp, var, sigma=1):
 
 
 def posterior(data, inp, var, sigma=1):
+    """
+    Calculates the posterior.
+
+    Parameters:
+    -----------
+    data : numpy array, data.
+    inp : dic, parameters for waveform generation
+    var : dic, values for parameters
+
+    Returns:
+    --------
+    post : float, posterior
+    """
     post = log_likelihood_hw(data, inp, var) + np.log(prior_coa(var[0])) + np.log(prior_inc(var[1]))
     return post
-
-
-
 
