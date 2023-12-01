@@ -3,7 +3,7 @@ name = "estimator"
 version = "0.0.1"
 authors = [
   { name="Aleyna Akyuz", email="aakyuz@syr.edu" },
-  { name="Ayomide Matthew Adefisoye", email="aakyuz@syr.edu" }
+  { name="Ayomide Matthew Adefisoye", email="amadefis@syr.edu" }
 ]
 description = "A small example package"
 readme = "README.md"
