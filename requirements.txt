@@ -1,5 +1,8 @@
-matplotlib==3.7.2           
+matplotlib==3.7.3           
 matplotlib-inline==0.1.6
-numpy==1.25.2                       
-scipy==1.11.3                    
-seaborn==0.13.0                     
+numpy==1.23.5
+numpy-base==1.26.0                                          
+pycbc==2.2.2
+emcee==2.1.1
+h5py==3.9.0
+tqdm==4.66.1                     

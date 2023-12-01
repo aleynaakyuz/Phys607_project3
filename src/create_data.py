@@ -1,7 +1,23 @@
+# This script is for reading the simulated
+# parameters and creating frequency series data.
 from pycbc.waveform import get_fd_waveform
 
-
 def create_data(data):
+    """
+    Fuction for creating gravitational wave
+    signal in frequeny domain. 
+
+    Parameters:
+    -----------
+    data : h5py file, parameters that are read from h5 file.
+
+    Returns:
+    --------
+    hp: pycbc Frequency series, plus phase in frequency domain.
+    hc: pycbc Frequency series, cross phase in frequency domain.
+    inp: dictonary, parameters used to create data.
+    """
+    
     parameters = {
     "mass1": "mass1",
     "mass2": "mass2",

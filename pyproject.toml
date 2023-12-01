@@ -18,6 +18,9 @@ dynamic = ["dependencies"]
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
 
+[project.scripts]
+main = "main:main.py"
+
 [project.urls]
 "Homepage" = "https://github.com/aleynaakyuz/Phys607_project3"
 "Bug Tracker" = "https://github.com/aleynaakyuz/Phys607_project3/issues"
